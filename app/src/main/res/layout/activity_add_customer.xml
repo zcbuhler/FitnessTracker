@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="com.z.buhler.fitnesstracker.addCustomerActivity">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/customer_add_title"
+            android:textSize="50sp"/>
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:cropToPadding="false"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Add Customer Name Here"
+        android:inputType="text"
+        android:padding="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Add Customer Billing Address"
+        android:inputType="textPostalAddress"
+        android:padding="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Add Credit Card Number"
+        android:inputType="number"
+        android:padding="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Add Customer Email"
+        android:padding="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Add Number of Sessions to Purchase"
+        android:inputType="number"
+        android:padding="5dp" />
+
+    <ImageView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add_photo_icon"
+        android:cropToPadding="false"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+</LinearLayout>
+

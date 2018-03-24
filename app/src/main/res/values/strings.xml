@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Fitness Tracker</string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!--Customer List Activity -->
+    <string name="add_customer_button">Add Customer</string>>
+    <string name="list_view">Customers</string>
+    <string name="customer_list_title">Customers</string>
+
+    <!--Customer Profile Activity -->
+    <string name="customer_name">Customer Name Goes Here</string>
+    <string name="customer_sessions_used">Number of Sessions Used</string>
+    <string name="add_sessions_button">Add Sessions</string>
+    <string name="session_completed_button">Session Completed</string>
+    <string name="customer_profile_title">Profile</string>
+
+    <!--Add Customer Activity-->
+    <string name="customer_add_title">Add</string>
+    <string name="add_customer_name">Add Customer Name Here</string>
+    <string name="add_customer_bill_address">Add Customer Billing Address</string>
+    <string name="customer_add_credit_card_number">Add Credit Card Number</string>
+    <string name="customer_buy_number_sessions">Add Number of Sessions to Purchase</string>
+    <string name="add_customer_email">Add Customer Email</string>
+
+    <!--Member Sign Completed Activity -->
+    <string name="customer_sign_title">Signature</string>
+
+
+</resources>

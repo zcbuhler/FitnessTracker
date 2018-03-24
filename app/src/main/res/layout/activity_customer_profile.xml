@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context="com.z.buhler.fitnesstracker.CustomerProfileActivity">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        >
+
+        <TextView
+            android:layout_margin="10dp"
+            android:id="@+id/customer_profile_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:text="@string/customer_profile_title"
+            android:textSize="50sp"
+            />
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:src="@drawable/logo"
+            android:cropToPadding="false"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="197dp"
+        android:layout_gravity="center"
+        android:cropToPadding="false"
+        android:src="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/customer_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/customer_name" />
+
+    <TextView
+        android:id="@+id/customer_sessions_used"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="5dp"
+        android:text="@string/customer_sessions_used"
+        android:gravity="center"/>
+
+
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/session_complete_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/session_completed_button"
+            android:gravity="center"/>
+
+        <Button
+            android:layout_margin="5dp"
+            android:id="@+id/add_sessions_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/add_sessions_button"
+            android:gravity="center"/>
+
+
+
+</LinearLayout>
