@@ -12,13 +12,15 @@
         android:layout_gravity="center">
 
         <TextView
+            android:id="@+id/member_sign_completed_text_title"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/customer_sign_title"
+            android:text="@string/member_sign_completed_text_title"
             android:textSize="50sp"/>
 
         <ImageView
+            android:contentDescription="@string/description_logo"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,5 +28,20 @@
             android:cropToPadding="false"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/member_sign_completed_text_instruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/member_sign_completed_text_instruction"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/member_sign_completed_button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/member_sign_completed_button_submit"
+        android:layout_margin="20dp"/>
 
 </LinearLayout>

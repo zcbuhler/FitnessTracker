@@ -12,14 +12,15 @@
         android:layout_gravity="center">
 
         <TextView
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/customer_add_title"
+            android:text="@string/add_customer_text_title"
             android:textSize="50sp"/>
 
         <ImageView
-            android:layout_margin="10dp"
+            android:contentDescription="@string/add_customer_description_logo"
+            android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/logo"
@@ -28,46 +29,78 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/add_customer_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Add Customer Name Here"
+        android:hint="@string/add_customer_edit_name"
         android:inputType="text"
         android:padding="5dp" />
 
     <EditText
+        android:id="@+id/add_customer_text_billing_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Add Customer Billing Address"
+        android:hint="@string/add_customer_edit_bill_address"
         android:inputType="textPostalAddress"
         android:padding="5dp" />
 
     <EditText
+        android:id="@+id/add_customer_number_credit_card_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Add Credit Card Number"
+        android:hint="@string/add_customer_edit_credit_card_number"
         android:inputType="number"
         android:padding="5dp" />
 
     <EditText
+        android:id="@+id/add_customer_text_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Add Customer Email"
+        android:hint="@string/add_customer_edit_email"
+        android:inputType="textEmailAddress"
         android:padding="5dp" />
 
     <EditText
+        android:id="@+id/add_customer_number_sessions_purchase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Add Number of Sessions to Purchase"
+        android:hint="@string/add_customer_edit_number_sessions"
         android:inputType="number"
         android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/add_customer_text_receipt_preference"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_customer_text_receipt_preference" />
+
+
+    <CheckBox
+        android:id="@+id/add_customer_print_receipt_checkbox"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_customer_text_receipt_print_preference" />
+
+    <CheckBox
+        android:id="@+id/add_customer_email_receipt_checkbox"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_customer_text_receipt_print_preference" />
+
 
     <ImageView
-        android:layout_margin="10dp"
+        android:contentDescription="@string/add_customer_description_photo_icon"
+        android:id="@+id/add_customer_add_photo_icon"
+        android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/add_photo_icon"
@@ -75,10 +108,10 @@
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/add_customer_submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/add_customer_button_submit" />
 
 </LinearLayout>
 

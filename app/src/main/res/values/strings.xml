@@ -2,41 +2,53 @@
     <string name="app_name">Fitness Tracker</string>
 
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <!--Login Activity -->
+    <string name="login_successful">Login Successful!</string>
+    <string name="login_unsuccessful">Login Failed!</string>
+    <string name="login_edit_username">jdoe</string>
+    <string name="login_edit_password">welcome1</string>
+    <string name="login_button_login">Login</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="login_text_title">Login</string>>
 
     <!--Customer List Activity -->
-    <string name="add_customer_button">Add Customer</string>>
-    <string name="list_view">Customers</string>
-    <string name="customer_list_title">Customers</string>
+    <string name="customer_list_button_add">Add Customer</string>>
+    <string name="customer_list_text_title">Customers</string>
 
     <!--Customer Profile Activity -->
-    <string name="customer_name">Customer Name Goes Here</string>
-    <string name="customer_sessions_used">Number of Sessions Used</string>
-    <string name="add_sessions_button">Add Sessions</string>
-    <string name="session_completed_button">Session Completed</string>
-    <string name="customer_profile_title">Profile</string>
+    <string name="customer_profile_description_profile">Profile Picture</string>
+    <string name="customer_profile_text_name">Customer Name Goes Here</string>
+    <string name="customer_profile_number_sessions_used">Number of Sessions Used</string>
+    <string name="customer_profile_add_sessions_button">Add Sessions</string>
+    <string name="customer_profile_button_session_complete">Session Completed</string>
+    <string name="customer_profile_text_title">Profile</string>
 
     <!--Add Customer Activity-->
-    <string name="customer_add_title">Add</string>
-    <string name="add_customer_name">Add Customer Name Here</string>
-    <string name="add_customer_bill_address">Add Customer Billing Address</string>
-    <string name="customer_add_credit_card_number">Add Credit Card Number</string>
-    <string name="customer_buy_number_sessions">Add Number of Sessions to Purchase</string>
-    <string name="add_customer_email">Add Customer Email</string>
+    <string name="add_customer_text_title">Add</string>
+
+    <string name="add_customer_edit_name">Add Customer Name Here</string>
+    <string name="add_customer_edit_bill_address">Add Customer Billing Address</string>
+    <string name="add_customer_edit_credit_card_number">Add Credit Card Number</string>
+    <string name="add_customer_edit_number_sessions">Add Number of Sessions to Purchase</string>
+    <string name="add_customer_edit_email">Add Customer Email</string>
+
+    <string name="add_customer_text_receipt_preference">Receipt Preference</string>
+    <string name="add_customer_text_receipt_email_preference">Email Receipt</string>
+    <string name="add_customer_text_receipt_print_preference">Print Receipt</string>>
+
+    <string name="add_customer_description_photo_icon">Icon</string>>
+
+    <string name="add_customer_button_submit">Submit</string>
 
     <!--Member Sign Completed Activity -->
-    <string name="customer_sign_title">Signature</string>
+    <string name="member_sign_completed_text_title">Signature</string>
+    <string name="member_sign_completed_text_instruction">Sign Below:</string>
+    <string name="member_sign_completed_button_submit">Submit</string>>
+
+    <!--Logo Description -->
+    <string name="description_logo">Logo</string>
+
 
 
 </resources>

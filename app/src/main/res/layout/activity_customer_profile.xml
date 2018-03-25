@@ -10,20 +10,19 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
 
         <TextView
             android:layout_margin="10dp"
-            android:id="@+id/customer_profile_title"
+            android:id="@+id/customer_profile_text_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:text="@string/customer_profile_title"
-            android:textSize="50sp"
-            />
+            android:text="@string/customer_profile_text_title"
+            android:textSize="50sp" />
 
         <ImageView
+            android:contentDescription="@string/description_logo"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,6 +33,7 @@
     </LinearLayout>
 
     <ImageView
+        android:contentDescription="@string/customer_profile_description_profile"
         android:layout_width="wrap_content"
         android:layout_height="197dp"
         android:layout_gravity="center"
@@ -41,43 +41,39 @@
         android:src="@drawable/profile" />
 
     <TextView
-        android:id="@+id/customer_name"
+        android:id="@+id/customer_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
         android:padding="5dp"
-        android:text="@string/customer_name" />
+        android:text="@string/customer_profile_text_name" />
 
     <TextView
-        android:id="@+id/customer_sessions_used"
+        android:id="@+id/customer_profile_number_sessions_used"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="5dp"
-        android:text="@string/customer_sessions_used"
+        android:text="@string/customer_profile_number_sessions_used"
         android:gravity="center"/>
 
-
-
         <Button
             android:layout_margin="5dp"
-            android:id="@+id/session_complete_button"
+            android:id="@+id/customer_profile_button_session_complete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/session_completed_button"
+            android:text="@string/customer_profile_button_session_complete"
             android:gravity="center"/>
 
         <Button
             android:layout_margin="5dp"
-            android:id="@+id/add_sessions_button"
+            android:id="@+id/customer_profile_add_sessions_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/add_sessions_button"
+            android:text="@string/customer_profile_add_sessions_button"
             android:gravity="center"/>
-
-
 
 </LinearLayout>

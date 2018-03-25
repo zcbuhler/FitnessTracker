@@ -14,14 +14,14 @@
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/customer_list_title"
+            android:text="@string/customer_list_text_title"
             android:textSize="50sp"/>
 
         <ImageView
+            android:contentDescription="@string/description_logo"
             android:layout_margin="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:src="@drawable/logo"
             android:cropToPadding="false"/>
     </LinearLayout>
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content">
 
         <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/list_view"
+            android:id="@+id/customer_list_customer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:smoothScrollbar="true"/>
@@ -42,10 +42,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/add_customer_button"
+        android:id="@+id/customer_list_button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_customer_button"
+        android:text="@string/customer_list_button_add"
         android:layout_gravity="center"
         android:layout_margin="10dp"/>
 
