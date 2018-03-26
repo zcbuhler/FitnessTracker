@@ -19,7 +19,7 @@
             android:textSize="50sp"/>
 
         <ImageView
-            android:contentDescription="@string/add_customer_description_logo"
+            android:contentDescription="@string/description_logo"
             android:layout_margin="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
