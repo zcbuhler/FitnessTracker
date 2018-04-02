@@ -4,6 +4,11 @@
     android:layout_height="fill_parent"
     android:layout_gravity="center">
 
+    <fragment android:name="com.z.buhler.fitnesstracker.DisplayUserFragment"
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
