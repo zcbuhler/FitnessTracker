@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CustomerListActivity" />
         <activity android:name=".CustomerProfileActivity" />
-        <activity android:name=".addCustomerActivity" />
+        <activity android:name=".AddCustomerActivity" />
         <activity android:name=".MemberSignCompletedActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

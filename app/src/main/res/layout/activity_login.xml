@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.z.buhler.fitnesstracker.addCustomerActivity">
+    tools:context="com.z.buhler.fitnesstracker.AddCustomerActivity">
 
     <fragment android:name="com.z.buhler.fitnesstracker.DisplayUserFragment"
         android:id="@+id/user_name"
@@ -53,10 +53,11 @@
         android:inputType="textPassword" />
 
     <Button
-        android:layout_margin="10dp"
         android:id="@+id/login_button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_button_login"/>
+        android:layout_margin="10dp"
+        android:onClick="onClick"
+        android:text="@string/login_button_login" />
 
 </LinearLayout>

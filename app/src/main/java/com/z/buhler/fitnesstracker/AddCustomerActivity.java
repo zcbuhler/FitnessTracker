@@ -11,41 +11,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CustomerListActivity extends AppCompatActivity {
+public class AddCustomerActivity extends AppCompatActivity {
 
-    private Button mViewProfileButton;
-    private Button mAddCustomerButton;
     private TextView mLoginStatusFragTV;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_list);
+        setContentView(R.layout.activity_add_customer);
 
         mLoginStatusFragTV = (TextView) findViewById(R.id.display_user_fragment_text);
         mLoginStatusFragTV.setText(R.string.user_logged_in);
+    }
 
-
-        mViewProfileButton = (Button) findViewById(R.id.customer_list_button_view_profile);
-        mViewProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(CustomerListActivity.this, CustomerProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        mAddCustomerButton = (Button) findViewById(R.id.customer_list_button_add);
-        mAddCustomerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(CustomerListActivity.this, AddCustomerActivity.class);
-                startActivity(intent);
-            }
-        });
+    public void onClick(View view) {
+        Intent intent = new Intent(AddCustomerActivity.this, CustomerProfileActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -75,7 +56,7 @@ public class CustomerListActivity extends AppCompatActivity {
                             String loggedOutBanner = getString(R.string.frag_text_user_logged);
                             mLoginStatusFragTV.setText(loggedOutBanner);
 
-                            Intent intent = new Intent(CustomerListActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(AddCustomerActivity.this, LoginActivity.class);
                             startActivity(intent);
                         }
                     });
@@ -88,5 +69,4 @@ public class CustomerListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
 }

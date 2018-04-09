@@ -35,7 +35,7 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_height="350dp"
+        android:layout_height="300dp"
         android:layout_width="wrap_content">
 
         <ListView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,8 +50,17 @@
         android:id="@+id/customer_list_button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/customer_list_button_add"
         android:layout_gravity="center"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp"
+        android:text="@string/customer_list_button_add" />
+
+    <Button
+        android:id="@+id/customer_list_button_view_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="@string/customer_list_button_view_profile" />
+
 
 </LinearLayout>

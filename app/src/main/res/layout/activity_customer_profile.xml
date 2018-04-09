@@ -63,22 +63,22 @@
         android:text="@string/customer_profile_number_sessions_used"
         android:gravity="center"/>
 
-        <Button
-            android:layout_margin="5dp"
-            android:id="@+id/customer_profile_button_session_complete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/customer_profile_button_session_complete"
-            android:gravity="center"/>
+    <Button
+        android:id="@+id/customer_profile_button_session_complete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="@string/customer_profile_button_session_complete" />
 
-        <Button
-            android:layout_margin="5dp"
-            android:id="@+id/customer_profile_add_sessions_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/customer_profile_add_sessions_button"
-            android:gravity="center"/>
+    <Button
+        android:id="@+id/customer_profile_add_sessions_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="@string/customer_profile_add_sessions_button" />
 
 </LinearLayout>

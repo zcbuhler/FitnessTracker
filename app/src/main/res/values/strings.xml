@@ -16,6 +16,7 @@
     <!--Customer List Activity -->
     <string name="customer_list_button_add">Add Customer</string>>
     <string name="customer_list_text_title">Customers</string>
+    <string name="customer_list_button_view_profile">View Profile</string>
 
     <!--Customer Profile Activity -->
     <string name="customer_profile_description_profile">Profile Picture</string>
@@ -52,5 +53,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Logout Menu -->
-    <string name="logout_menu_text">LogOff</string>>
+    <string name="logout_menu_text">LogOff</string>
+
+    <!-- Any -->
+    <string name="user_logged_in">Logged In: JDOE</string>
 </resources>

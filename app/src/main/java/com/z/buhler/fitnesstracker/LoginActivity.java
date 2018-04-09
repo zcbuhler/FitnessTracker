@@ -1,6 +1,7 @@
 package com.z.buhler.fitnesstracker;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,6 +51,9 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     mLoginStatusFragTV.setText(fragmentLoggedUserBanner);
+
+                    Intent intent = new Intent(LoginActivity.this, CustomerListActivity.class);
+                    startActivity(intent);
                 }
             }
         });
@@ -89,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
 
             return true;
         }
-
 
         return super.onOptionsItemSelected(item);
 

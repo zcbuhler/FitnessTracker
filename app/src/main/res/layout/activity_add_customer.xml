@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    tools:context="com.z.buhler.fitnesstracker.addCustomerActivity">
+    tools:context="com.z.buhler.fitnesstracker.AddCustomerActivity">
 
     <fragment android:name="com.z.buhler.fitnesstracker.DisplayUserFragment"
         android:id="@+id/user_name"
@@ -116,6 +116,7 @@
         android:id="@+id/add_customer_submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onClick"
         android:text="@string/add_customer_button_submit" />
 
 </LinearLayout>
