@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 public class DisplayUserFragment extends Fragment {
-    private String mLoggedInUserPrompt;
+
     private TextView mUserLoggedInTextView;
 
     @Override
@@ -20,11 +20,11 @@ public class DisplayUserFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_display_user_fragment, container, false);
 
-        mLoggedInUserPrompt = "Logged In: " + getString(R.string.login_edit_username);
+
 
         mUserLoggedInTextView = (TextView) v.findViewById(R.id.display_user_fragment_text);
 
-        mUserLoggedInTextView.setText(mLoggedInUserPrompt);
+        mUserLoggedInTextView.setText(R.string.frag_text_user_logged);
 
         return v;
     }

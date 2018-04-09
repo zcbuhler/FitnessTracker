@@ -10,7 +10,8 @@
     <string name="login_button_login">Login</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
-    <string name="login_text_title">Login</string>>
+    <string name="login_text_title">Login</string>
+    <string name="frag_text_user_logged">Logged In:  </string>
 
     <!--Customer List Activity -->
     <string name="customer_list_button_add">Add Customer</string>>
@@ -50,5 +51,6 @@
     <string name="description_logo">Logo</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
+    <!--Logout Menu -->
+    <string name="logout_menu_text">LogOff</string>>
 </resources>
