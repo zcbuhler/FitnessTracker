@@ -81,4 +81,13 @@
         android:gravity="center"
         android:text="@string/customer_profile_add_sessions_button" />
 
+    <Button
+        android:id="@+id/go_to_customer_list_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="@string/go_to_customer_list" />
+
 </LinearLayout>

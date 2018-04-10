@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 public class CustomerProfileActivity extends AppCompatActivity {
 
+    private Button mToCustomerListButton;
     private Button mAddSessionsButton;
     private Button mSessionCompletedButton;
     private TextView mLoginStatusFragTV;
@@ -30,7 +31,7 @@ public class CustomerProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(CustomerProfileActivity.this, AddCustomerActivity.class);
+                Intent intent = new Intent(CustomerProfileActivity.this, MemberSignCompletedActivity.class);
                 startActivity(intent);
             }
         });
@@ -40,10 +41,22 @@ public class CustomerProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(CustomerProfileActivity.this, MemberSignCompletedActivity.class);
+                Intent intent = new Intent(CustomerProfileActivity.this, AddCustomerActivity.class);
                 startActivity(intent);
             }
         });
+
+        mToCustomerListButton = (Button) findViewById(R.id.go_to_customer_list_button);
+        mToCustomerListButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(CustomerProfileActivity.this, CustomerListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override

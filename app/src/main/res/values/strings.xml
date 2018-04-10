@@ -17,6 +17,7 @@
     <string name="customer_list_button_add">Add Customer</string>>
     <string name="customer_list_text_title">Customers</string>
     <string name="customer_list_button_view_profile">View Profile</string>
+    <string name="go_to_customer_list">View Customer List</string>
 
     <!--Customer Profile Activity -->
     <string name="customer_profile_description_profile">Profile Picture</string>
