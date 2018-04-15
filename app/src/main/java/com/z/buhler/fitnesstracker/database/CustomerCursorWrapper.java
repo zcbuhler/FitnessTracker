@@ -31,7 +31,6 @@ public class CustomerCursorWrapper extends CursorWrapper {
         int emailReceipt = getInt(getColumnIndex(Cols.EMAIL_RECEIPT));
         int printReceipt = getInt(getColumnIndex(Cols.PRINT_RECEIPT));
 
-
         Customer customer = new Customer(UUID.fromString(uuidString));
         customer.setName(name);
         customer.setAddress(address);
@@ -40,7 +39,6 @@ public class CustomerCursorWrapper extends CursorWrapper {
         customer.setSessionsRemaining(sessionRemaining);
         customer.setEmailReceipt(emailReceipt == 1);
         customer.setPrintReciept(printReceipt == 1);
-
 
         return customer;
     }

@@ -5,11 +5,17 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.List;
 
 public class CustomerListActivity extends AppCompatActivity {
 
@@ -87,6 +93,65 @@ public class CustomerListActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private class CustomerHolder extends RecyclerView.ViewHolder
+            implements View.OnClickListener {
+
+        private Customer mCustomer;
+        private TextView mNameTextView;
+
+
+        public CustomerHolder(LayoutInflater inflater, ViewGroup parent) {
+            super(inflater.inflate(R.layout.list_item_customer, parent, false));
+            itemView.setOnClickListener(this);
+
+            mNameTextView = (TextView) itemView.findViewById(R.id.customer_name_text);
+
+        }
+
+        public void bind(Customer customer) {
+            mCustomer = customer;
+            mNameTextView.setText(mCustomer.getName());
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            // !!! Update later to pass customer object info to populate the customer profile
+            Intent intent = new Intent(CustomerListActivity.this, CustomerProfileActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private class CrimeAdapter extends RecyclerView.Adapter<CustomerHolder> {
+
+        private List<Customer> mCustomers;
+
+        public void CustomerAdapter(List<Customer> customers) {
+            mCustomers = customers;
+        }
+
+        @Override
+        public CustomerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
+            return new CustomerHolder(layoutInflater, parent);
+        }
+
+        @Override
+        public void onBindViewHolder(CustomerHolder holder, int position) {
+            Customer customer = mCustomers.get(position);
+            holder.bind(customer);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mCustomers.size();
+        }
+
+        public void setCustomers(List<Customer> customers) {
+            mCustomers = customers;
+        }
     }
 
 }
