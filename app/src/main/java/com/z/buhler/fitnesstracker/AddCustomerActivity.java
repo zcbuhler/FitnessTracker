@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class AddCustomerActivity extends AppCompatActivity {
 
     private TextView mLoginStatusFragTV;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
