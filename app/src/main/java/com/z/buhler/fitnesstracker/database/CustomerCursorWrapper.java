@@ -23,7 +23,7 @@ public class CustomerCursorWrapper extends CursorWrapper {
 
     public Customer getCustomer() {
         String uuidString = getString(getColumnIndex(CustomerTable.Cols.UUID));
-        String name = getString(getColumnIndex(CustomerTable.Cols.NAME));
+        String name = getString(getColumnIndex(CustomerTable.Cols.FULL_NAME));
         String address = getString(getColumnIndex(CustomerTable.Cols.ADDRESS));
         String creditCardNumber = getString(getColumnIndex(Cols.CREDIT_CARD_NUMBER));
         String email = getString(getColumnIndex(CustomerTable.Cols.EMAIL));
@@ -38,7 +38,7 @@ public class CustomerCursorWrapper extends CursorWrapper {
         customer.setEmail(email);
         customer.setSessionsRemaining(sessionRemaining);
         customer.setEmailReceipt(emailReceipt == 1);
-        customer.setPrintReciept(printReceipt == 1);
+        customer.setPrintReceipt(printReceipt == 1);
 
         return customer;
     }

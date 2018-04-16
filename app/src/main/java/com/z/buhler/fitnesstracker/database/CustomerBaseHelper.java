@@ -24,7 +24,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + CustomerTable.NAME + "(" +
                 " _id integer primary key autoincrement, " +
                 CustomerTable.Cols.UUID + ", " +
-                CustomerTable.Cols.NAME + ", " +
+                CustomerTable.Cols.FULL_NAME + ", " +
                 CustomerTable.Cols.ADDRESS + ", " +
                 CustomerTable.Cols.CREDIT_CARD_NUMBER +
                 CustomerTable.Cols.EMAIL + ", " +

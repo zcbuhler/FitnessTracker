@@ -80,11 +80,11 @@ public class Customer {
         mEmailReceipt = emailReceipt;
     }
 
-    public Boolean getPrintReciept() {
+    public Boolean getPrintReceipt() {
         return mPrintReceipt;
     }
 
-    public void setPrintReciept(Boolean printReciept) {
+    public void setPrintReceipt(Boolean printReciept) {
         mPrintReceipt = printReciept;
     }
 

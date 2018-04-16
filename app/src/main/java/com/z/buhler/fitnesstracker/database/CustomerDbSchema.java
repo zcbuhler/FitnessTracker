@@ -11,7 +11,7 @@ public class CustomerDbSchema {
 
         public static final class Cols {
             public static final String UUID = "uuid";
-            public static final String NAME = "name";
+            public static final String FULL_NAME = "fullName";
             public static final String ADDRESS = "address";
             public static final String CREDIT_CARD_NUMBER = "creditCardNumber";
             public static final String EMAIL = "email";
