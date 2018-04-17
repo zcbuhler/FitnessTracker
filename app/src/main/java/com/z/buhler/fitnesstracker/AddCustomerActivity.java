@@ -41,7 +41,7 @@ public class AddCustomerActivity extends AppCompatActivity {
 
 
 
-    private SQLiteDatabase mDatabase;
+
     private Context mContext;
 
     private EditText mNameET;
@@ -52,9 +52,9 @@ public class AddCustomerActivity extends AppCompatActivity {
     private CheckBox mEmailReceiptCB;
     private CheckBox mPrintReceiptCB;
 
-    public AddCustomerActivity() {
-        mDatabase = new CustomerBaseHelper(mContext).getWritableDatabase();
-    }
+//    public AddCustomerActivity() {
+//        mDatabase = new CustomerBaseHelper(this).getWritableDatabase();
+//    }
 
 
     @Override
@@ -163,7 +163,7 @@ public class AddCustomerActivity extends AppCompatActivity {
         values.put(UUID, customer.getId().toString());
         values.put(FULL_NAME, customer.getName());
         values.put(ADDRESS, customer.getAddress());
-        values.put(CREDIT_CARD_NUMBER, customer.getCreditCardNumber());
+        values.put(CREDIT_CARD_NUMBER, customer.getCreditCardNumber().toString());
         values.put(EMAIL, customer.getEmail());
         values.put(SESSIONS_REMAINING, customer.getSessionsRemaining());
         values.put(PRINT_RECEIPT, customer.getPrintReceipt() ? 1 : 0);
@@ -174,9 +174,9 @@ public class AddCustomerActivity extends AppCompatActivity {
     public void addCustomer(Customer c) {
 
         ContentValues values = getContentValues(c);
-
+        SQLiteDatabase mDatabase = new CustomerBaseHelper(this ).getReadableDatabase();
         mDatabase.insert(CustomerDbSchema.CustomerTable.NAME, null, values);
-        Log.d("DATABASE", "Customer Added");
+
     }
 
 }

@@ -26,7 +26,7 @@ public class CustomerBaseHelper extends SQLiteOpenHelper {
                 CustomerTable.Cols.UUID + ", " +
                 CustomerTable.Cols.FULL_NAME + ", " +
                 CustomerTable.Cols.ADDRESS + ", " +
-                CustomerTable.Cols.CREDIT_CARD_NUMBER +
+                CustomerTable.Cols.CREDIT_CARD_NUMBER + "," +
                 CustomerTable.Cols.EMAIL + ", " +
                 CustomerTable.Cols.SESSIONS_REMAINING + ", " +
                 CustomerTable.Cols.EMAIL_RECEIPT + ", " +
