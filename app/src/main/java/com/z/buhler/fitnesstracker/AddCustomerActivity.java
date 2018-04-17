@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,14 +34,15 @@ import static com.z.buhler.fitnesstracker.database.CustomerDbSchema.CustomerTabl
 
 public class AddCustomerActivity extends AppCompatActivity {
 
-    private static AddCustomerActivity sAddCustomer;
+
 
     private TextView mLoginStatusFragTV;
     private Button mSubmitButton;
 
-    private SQLiteDatabase mDatabase ;
-    //
 
+
+    private SQLiteDatabase mDatabase;
+    private Context mContext;
 
     private EditText mNameET;
     private EditText mAddressET;
@@ -50,14 +52,15 @@ public class AddCustomerActivity extends AppCompatActivity {
     private CheckBox mEmailReceiptCB;
     private CheckBox mPrintReceiptCB;
 
+    public AddCustomerActivity() {
+        mDatabase = new CustomerBaseHelper(mContext).getWritableDatabase();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_customer);
-
-        CustomerBaseHelper mDatabase = new CustomerBaseHelper(this);
-
-
 
         mNameET = (EditText) findViewById(R.id.add_customer_text_name);
         mAddressET = (EditText) findViewById(R.id.add_customer_text_billing_address);
@@ -108,8 +111,8 @@ public class AddCustomerActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-//        Intent intent = new Intent(AddCustomerActivity.this, CustomerProfileActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(AddCustomerActivity.this, CustomerProfileActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -169,7 +172,9 @@ public class AddCustomerActivity extends AppCompatActivity {
     }
 
     public void addCustomer(Customer c) {
+
         ContentValues values = getContentValues(c);
+
         mDatabase.insert(CustomerDbSchema.CustomerTable.NAME, null, values);
         Log.d("DATABASE", "Customer Added");
     }
