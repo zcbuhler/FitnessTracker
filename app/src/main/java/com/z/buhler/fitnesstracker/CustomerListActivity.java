@@ -2,21 +2,32 @@ package com.z.buhler.fitnesstracker;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.z.buhler.fitnesstracker.database.CustomerBaseHelper;
+import com.z.buhler.fitnesstracker.database.CustomerCursorWrapper;
+import com.z.buhler.fitnesstracker.database.CustomerDbSchema;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 public class CustomerListActivity extends AppCompatActivity {
 
@@ -24,12 +35,21 @@ public class CustomerListActivity extends AppCompatActivity {
     private Button mAddCustomerButton;
     private TextView mLoginStatusFragTV;
     private RecyclerView mCustomerRecyclerView;
+    private CustomerLab mCustomerLab;
+
+
+    private ListView mCustomerListView;
+
+    private TextView mTextViewOfList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_list);
 
+        mCustomerListView = findViewById(R.id.customer_list_customer);
+
+        updateUI();
         mLoginStatusFragTV = (TextView) findViewById(R.id.display_user_fragment_text);
         mLoginStatusFragTV.setText(R.string.user_logged_in);
 
@@ -55,26 +75,16 @@ public class CustomerListActivity extends AppCompatActivity {
         });
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                        Bundle savedInstanceState){
-//        View view = inflater.inflate(R.layout.activity_customer_list, container, false);
-//
-//        mCustomerRecyclerView = (RecyclerView) view
-//                .findViewById(R.id.customer_list_customer);
-//
-//
-//
-//
-//
-//
-//        return view;
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.logout_menu, menu);
         return true;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        updateUI();
     }
 
     @Override
@@ -112,62 +122,51 @@ public class CustomerListActivity extends AppCompatActivity {
 
     }
 
-    private class CustomerHolder extends RecyclerView.ViewHolder
-            implements View.OnClickListener {
-
-        private Customer mCustomer;
-        private TextView mNameTextView;
 
 
-        public CustomerHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.list_item_customer, parent, false));
-            itemView.setOnClickListener(this);
-
-            mNameTextView = (TextView) itemView.findViewById(R.id.customer_name_text);
-
-        }
-
-        public void bind(Customer customer) {
-            mCustomer = customer;
-            mNameTextView.setText(mCustomer.getName());
-        }
-
-        @Override
-        public void onClick(View view) {
-
-            // !!! Update later to pass customer object info to populate the customer profile
-            Intent intent = new Intent(CustomerListActivity.this, CustomerProfileActivity.class);
-            startActivity(intent);
-        }
+    private CustomerCursorWrapper queryCustomers(String whereClause, String[] whereArgs) {
+        SQLiteDatabase mDatabase = new CustomerBaseHelper(this ).getReadableDatabase();
+        Cursor cursor = mDatabase.query(
+                CustomerDbSchema.CustomerTable.NAME,
+                null, // Columns - null selects all columns
+                whereClause,
+                whereArgs,
+                null, // groupBy
+                null, // having
+                null  // orderBy
+        );
+        return new CustomerCursorWrapper(cursor);
     }
 
-    private class CrimeAdapter extends RecyclerView.Adapter<CustomerHolder> {
+    public List<Customer>getCustomerList(){
 
-        private List<Customer> mCustomers;
+        List<Customer> customers =  new ArrayList<>();
 
-        public void CustomerAdapter(List<Customer> customers) {
-            mCustomers = customers;
+        CustomerCursorWrapper cursor = queryCustomers(null, null);
+        try {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                customers.add(cursor.getCustomer());
+                cursor.moveToNext();
+            }
+        } finally {
+            cursor.close();
         }
+        int size = customers.size();
+        Log.d("NUMBER DATABASE IS: ", "" + customers.size());
+        return customers;
+    }
 
-        @Override
-        public CustomerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = getLayoutInflater();
-            return new CustomerHolder(layoutInflater, parent);
-        }
+    private void updateUI() {
 
-        @Override
-        public void onBindViewHolder(CustomerHolder holder, int position) {
-            Customer customer = mCustomers.get(position);
-            holder.bind(customer);
-        }
 
-       @Override
-       public int getItemCount() {
-           return mCustomers.size();
-       }
+        List<Customer> customers = getCustomerList();
 
-        public void setCustomers(List<Customer> customers) {
-            mCustomers = customers; }
+        ArrayAdapter<Customer> theCustomerArrayAdaptor = new ArrayAdapter<Customer>(
+                this, R.layout.list_item_customer, R.id.customer_name_text, customers);
+
+        mCustomerListView.setAdapter(theCustomerArrayAdaptor);
+
     }
 
 }

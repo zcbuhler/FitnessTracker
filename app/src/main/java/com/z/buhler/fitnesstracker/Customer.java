@@ -88,11 +88,10 @@ public class Customer {
         mPrintReceipt = printReciept;
     }
 
-//    public Boolean emailReceiptForCustomer() {
-//        return mEmailReceipt;
-//    }
-//
-//    public Boolean printReceiptForCustomer() {
-//        return mPrintReceipt;
-//    }
+    @Override
+    public String toString() {
+
+        String name = getName();
+        return name;
+    }
 }

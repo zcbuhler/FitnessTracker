@@ -34,13 +34,8 @@ import static com.z.buhler.fitnesstracker.database.CustomerDbSchema.CustomerTabl
 
 public class AddCustomerActivity extends AppCompatActivity {
 
-
-
     private TextView mLoginStatusFragTV;
     private Button mSubmitButton;
-
-
-
 
     private Context mContext;
 
@@ -51,11 +46,6 @@ public class AddCustomerActivity extends AppCompatActivity {
     private EditText mSessionsPurchasedET;
     private CheckBox mEmailReceiptCB;
     private CheckBox mPrintReceiptCB;
-
-//    public AddCustomerActivity() {
-//        mDatabase = new CustomerBaseHelper(this).getWritableDatabase();
-//    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,24 +75,9 @@ public class AddCustomerActivity extends AppCompatActivity {
                 newCustomer.setAddress(mAddressET.getText().toString());
                 newCustomer.setCreditCardNumber(mCreditCardNumberET.getText().toString());
                 newCustomer.setEmail(mEmail.getText().toString());
-
-
-                //Log.d("SESSIONS REMAINING TEST", "" + sessionsRemaining);
                 newCustomer.setSessionsRemaining(Integer.parseInt(mSessionsPurchasedET.getText().toString()));
                 newCustomer.setEmailReceipt(mEmailReceiptCB.isChecked());
                 newCustomer.setPrintReceipt(mPrintReceiptCB.isChecked());
-
-                Log.d("Customer Object Added", "" +
-                        newCustomer.getId() + " : " +
-                        newCustomer.getName() + " : " +
-                        newCustomer.getAddress() + " : " +
-                        newCustomer.getCreditCardNumber() + " : " +
-                        newCustomer.getEmail() + " : " +
-                        newCustomer.getSessionsRemaining() + " : " +
-                        newCustomer.getEmail() + " : " +
-                        newCustomer.getPrintReceipt());
-
-
 
                 addCustomer(newCustomer);
 
