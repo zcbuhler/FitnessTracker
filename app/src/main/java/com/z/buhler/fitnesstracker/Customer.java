@@ -2,13 +2,14 @@ package com.z.buhler.fitnesstracker;
 
 import android.provider.ContactsContract;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  * Created by zacharybuhler on 4/14/18.
  */
 
-public class Customer {
+public class Customer implements Serializable{
 
     private UUID mId;
     private String mName;

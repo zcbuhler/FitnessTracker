@@ -38,12 +38,13 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/profile_image_image_view"
         android:contentDescription="@string/customer_profile_description_profile"
         android:layout_width="wrap_content"
         android:layout_height="197dp"
         android:layout_gravity="center"
         android:cropToPadding="false"
-        android:src="@drawable/profile" />
+         />
 
     <TextView
         android:id="@+id/customer_profile_name"

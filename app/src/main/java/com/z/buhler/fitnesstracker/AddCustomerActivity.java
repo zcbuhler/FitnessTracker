@@ -1,12 +1,21 @@
 package com.z.buhler.fitnesstracker;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +26,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.z.buhler.fitnesstracker.CustomerLab;
 import com.z.buhler.fitnesstracker.database.CustomerBaseHelper;
 import com.z.buhler.fitnesstracker.database.CustomerDbSchema;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static com.z.buhler.fitnesstracker.CustomerProfileActivity.REQUEST_IMAGE_CAPTURE;
 import static com.z.buhler.fitnesstracker.database.CustomerDbSchema.CustomerTable.*;
 
 import static com.z.buhler.fitnesstracker.database.CustomerDbSchema.CustomerTable.Cols.ADDRESS;
@@ -36,6 +54,7 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     private TextView mLoginStatusFragTV;
     private Button mSubmitButton;
+    private ImageView mAddPictureIV;
 
     private Context mContext;
 
@@ -46,6 +65,10 @@ public class AddCustomerActivity extends AppCompatActivity {
     private EditText mSessionsPurchasedET;
     private CheckBox mEmailReceiptCB;
     private CheckBox mPrintReceiptCB;
+
+    private String mCustomerImagePath;
+    private String mCurrentPhotoPath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,12 +106,41 @@ public class AddCustomerActivity extends AppCompatActivity {
 
             }
         });
+
+        mAddPictureIV = (ImageView) findViewById(R.id.add_customer_add_photo_icon);
+
+        mAddPictureIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+                Log.d("PATH FOR IMAGE", "" + mCurrentPhotoPath);
+            }
+        });
+
     }
 
     public void onClick(View view) {
         Intent intent = new Intent(AddCustomerActivity.this, CustomerProfileActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap photo = (Bitmap) extras.get("data");
+
+            try {
+                createImageFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,5 +205,60 @@ public class AddCustomerActivity extends AppCompatActivity {
         mDatabase.insert(CustomerDbSchema.CustomerTable.NAME, null, values);
 
     }
+
+    private void dispatchTakePictureIntent() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        REQUEST_IMAGE_CAPTURE);
+            }
+        }
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+
+
+            // Create the File where the photo should go
+            File photoFile = null;
+            try {
+                photoFile = createImageFile();
+            } catch (IOException ex) {
+                // Error occurred while creating the File
+
+            }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.z.buhler.fitnesstracker.fileprovider",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
+        }
+    }
+
+
+    private File createImageFile() throws IOException {
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
+    }
+
+
 
 }

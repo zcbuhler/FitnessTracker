@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,6 +39,7 @@ public class CustomerListActivity extends AppCompatActivity {
     private CustomerLab mCustomerLab;
 
 
+
     private ListView mCustomerListView;
 
     private TextView mTextViewOfList;
@@ -45,9 +47,28 @@ public class CustomerListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_customer_list);
 
         mCustomerListView = findViewById(R.id.customer_list_customer);
+
+        mCustomerListView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener(){
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View view,
+                                            int position, long id) {
+                        // TODO Auto-generated method stub
+                        Customer c = (Customer) mCustomerListView.getItemAtPosition(position);
+                        Log.d("OBJECT Name: ", c.getName());
+
+                        Intent intent = new Intent(CustomerListActivity.this, CustomerProfileActivity.class);
+                        intent.putExtra("SelectedCustomer", c);
+
+                        startActivity(intent);
+
+                    }
+                }
+        );
 
         updateUI();
         mLoginStatusFragTV = (TextView) findViewById(R.id.display_user_fragment_text);
@@ -121,6 +142,17 @@ public class CustomerListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
+
+//    public void onListItemClick(AdapterView<?> parent, View view, int position, long id) {
+//       Customer c = (Customer) parent.getItemAtPosition(position);
+//
+////       Intent intent = new Intent(CustomerListActivity.this, CustomerProfileActivity.class);
+////       startActivity(intent);
+//
+//       Log.d("OBJECT Name: ", c.getName());
+//
+//    }
 
 
 

@@ -1,7 +1,12 @@
 package com.z.buhler.fitnesstracker;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,19 +14,40 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
+
 public class CustomerProfileActivity extends AppCompatActivity {
+
+    private TextView mSeletedCustomerNameTV;
+    private TextView mNumberOfSessionsRemainingTV;
+
+    private Customer mSelectedCustomer;
 
     private Button mToCustomerListButton;
     private Button mAddSessionsButton;
     private Button mSessionCompletedButton;
+
     private TextView mLoginStatusFragTV;
+    private ImageView mProfilePicture;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
+
+        // Get the Customer that has been selected
+        mSelectedCustomer = (Customer) getIntent().getSerializableExtra("SelectedCustomer");
+
+        // Get the member display UI items
+        mSeletedCustomerNameTV = (TextView) findViewById(R.id.customer_profile_name);
+        mNumberOfSessionsRemainingTV = (TextView) findViewById(R.id.customer_profile_number_sessions_used);
+
+        mProfilePicture = (ImageView) findViewById(R.id.profile_image_image_view);
 
         mLoginStatusFragTV = (TextView) findViewById(R.id.display_user_fragment_text);
         mLoginStatusFragTV.setText(R.string.user_logged_in);
@@ -30,9 +56,9 @@ public class CustomerProfileActivity extends AppCompatActivity {
         mAddSessionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(CustomerProfileActivity.this, MemberSignCompletedActivity.class);
-                startActivity(intent);
+                dispatchTakePictureIntent();
+//                Intent intent = new Intent(CustomerProfileActivity.this, MemberSignCompletedActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -57,6 +83,19 @@ public class CustomerProfileActivity extends AppCompatActivity {
         });
 
 
+
+        updateSelectedCustomerUI();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mProfilePicture.setImageBitmap(imageBitmap);
+
+
+        }
     }
 
     @Override
@@ -99,5 +138,28 @@ public class CustomerProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
+    private void dispatchTakePictureIntent() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissions(new String[]{Manifest.permission.CAMERA},
+                        REQUEST_IMAGE_CAPTURE);
+            }
+        }
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    private void updateSelectedCustomerUI() {
+        mSeletedCustomerNameTV.setText(mSelectedCustomer.getName());
+        mNumberOfSessionsRemainingTV.setText(mSelectedCustomer.getSessionsRemaining().toString());
+    }
+
 
 }
