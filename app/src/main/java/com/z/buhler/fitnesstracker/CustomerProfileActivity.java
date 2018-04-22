@@ -4,7 +4,9 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -52,13 +54,21 @@ public class CustomerProfileActivity extends AppCompatActivity {
         mLoginStatusFragTV = (TextView) findViewById(R.id.display_user_fragment_text);
         mLoginStatusFragTV.setText(R.string.user_logged_in);
 
+        mProfilePicture = (ImageView) findViewById(R.id.profile_image_image_view);
+        mProfilePicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dispatchTakePictureIntent();
+            }
+        });
+
         mAddSessionsButton = (Button) findViewById(R.id.customer_profile_button_session_complete);
         mAddSessionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dispatchTakePictureIntent();
-//                Intent intent = new Intent(CustomerProfileActivity.this, MemberSignCompletedActivity.class);
-//                startActivity(intent);
+
+                Intent intent = new Intent(CustomerProfileActivity.this, MemberSignCompletedActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -93,6 +103,8 @@ public class CustomerProfileActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             mProfilePicture.setImageBitmap(imageBitmap);
+
+
 
 
         }

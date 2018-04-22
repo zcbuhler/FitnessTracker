@@ -113,7 +113,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
-                Log.d("PATH FOR IMAGE", "" + mCurrentPhotoPath);
+
             }
         });
 
@@ -128,15 +128,7 @@ public class AddCustomerActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap photo = (Bitmap) extras.get("data");
-
-            try {
-                createImageFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
         }
     }
 
@@ -206,16 +198,19 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     }
 
+
+
+
     private void dispatchTakePictureIntent() {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA)
-                    != PackageManager.PERMISSION_GRANTED) {
-
-                requestPermissions(new String[]{Manifest.permission.CAMERA},
-                        REQUEST_IMAGE_CAPTURE);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (checkSelfPermission(Manifest.permission.CAMERA)
+//                    != PackageManager.PERMISSION_GRANTED) {
+//
+//                requestPermissions(new String[]{Manifest.permission.CAMERA},
+//                        REQUEST_IMAGE_CAPTURE);
+//            }
+//        }
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -227,6 +222,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             File photoFile = null;
             try {
                 photoFile = createImageFile();
+
             } catch (IOException ex) {
                 // Error occurred while creating the File
 
@@ -259,6 +255,13 @@ public class AddCustomerActivity extends AppCompatActivity {
         return image;
     }
 
+    private void galleryAddPic() {
+        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        File f = new File(mCurrentPhotoPath);
+        Uri contentUri = Uri.fromFile(f);
+        mediaScanIntent.setData(contentUri);
+        this.sendBroadcast(mediaScanIntent);
+    }
 
 
 }
